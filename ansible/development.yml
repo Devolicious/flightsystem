@@ -1,16 +1,11 @@
 ---
 hosts: 127.0.0.1
-vars:
-  dev_env_dir: /usr/local/flightsystem
 
 tasks:
   - name: Check Sudo Password
     command: ls
     become: yes
     become_method: sudo
-
-  - name: Symlink FlightSystem to bin directory
-    file: state=link src=/usr/local/flightsystem/bin/flightsystem dest=/usr/bin/flightsytem
 
 roles:
   - docker

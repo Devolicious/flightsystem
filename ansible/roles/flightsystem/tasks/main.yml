@@ -1,0 +1,6 @@
+---
+- name: Create FlightSystem Machine
+  command: "{{flightsystem_root_dir}}/bin/flightsystem machine create creates=~/.docker/machine/machines/flightsystem/config.json"
+
+- name: Symlink FlightSystem to bin directory
+  file: state=link src="{{flightsystem_root_dir}}/bin/flightsystem" dest=/usr/bin/flightsytem
