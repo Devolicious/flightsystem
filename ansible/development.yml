@@ -1,11 +1,12 @@
 ---
-hosts: 127.0.0.1
+- hosts: 127.0.0.1
 
-tasks:
-  - name: Check Sudo Password
-    command: ls
-    become: yes
-    become_method: sudo
+  tasks:
+    - name: Check Sudo Password
+      command: ls
+      become: yes
+      become_method: sudo
 
-roles:
-  - docker
+  roles:
+    - docker
+    - flightsystem
