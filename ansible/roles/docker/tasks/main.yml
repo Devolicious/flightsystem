@@ -13,10 +13,9 @@
   become_method: sudo
 
 - name: Create dev resolver file at /etc/resolver/dev
-  file: >
+  copy: >
     src=etc_resolver_dev
     dest=/etc/resolver/dev
-    state=file
   become: yes
   become_method: sudo
 
