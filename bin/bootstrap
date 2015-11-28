@@ -20,4 +20,4 @@ git clone https://github.com/Devolicious/flightsystem.git /usr/local/flightsyste
 ## Run Ansible Playbook ##
 echo 'Run Ansible Playbook (will require your sudo password)...'
 echo -e "\n\n"
-/usr/local/flightsystem/bin/dev update
+/usr/local/flightsystem/bin/flightsystem update
