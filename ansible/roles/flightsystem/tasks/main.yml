@@ -4,3 +4,5 @@
 
 - name: Symlink FlightSystem to bin directory
   file: state=link src="{{flightsystem_root_dir}}/bin/flightsystem" dest=/usr/bin/flightsytem
+  become: yes
+  become_method: sudo
