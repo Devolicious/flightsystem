@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+## Update Homebrew ##
+echo 'Installing or Updating Homebrew...'
+brew update
+echo -e "\n\n"
+
+## Install or Update Ansible ##
+echo 'Installing or Updating Ansible...'
+which -s ansible-playbook
+if [[ $? != 0 ]] ; then
+    brew install ansible
+fi
+echo -e "\n\n"
+
+## Check out a copy of this repo (first time only) ##
+echo 'Checking out FlightSystem repo...'
+git clone https://github.com/Devolicious/flightsystem.git /usr/local/flightsystem 2>/dev/null
+
+## Run Ansible Playbook ##
+echo 'Run Ansible Playbook (will require your sudo password)...'
+echo -e "\n\n"
+/usr/local/flightsystem/bin/dev update

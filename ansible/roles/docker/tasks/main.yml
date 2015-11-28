@@ -1,0 +1,59 @@
+---
+
+- name: Install Docker and Extras
+  homebrew: name={{item}} state=latest
+  with_items:
+    - docker
+    - docker-machine
+    - docker-compose
+
+- name: Create resolver directory
+    file: path=/etc/resolver state=directory mode=0755
+    become: yes
+    become_method: sudo
+
+- name: Create dev resolver file at /etc/resolver/dev
+  file: >
+    src=etc_resolver_dev
+    dest=/etc/resolver/dev
+    state=file
+  become: yes
+  become_method: sudo
+
+- name: Add NFS share to /etc/exports
+  lineinfile: >
+    dest=/etc/exports
+    line="{{item}}"
+    create=yes
+  with_items:
+    - '## Begin FlightSystem Developer Environment ##'
+    - '"/home/projects" -network 192.168.0.0 -mask 255.255.0.0 -alldirs -mapall=0:80'
+    - '## End FlightSystem Developer Environment ##'
+  become: yes
+  become_method: sudo
+  register: exports
+
+- name: Restart nfsd
+  command: sudo nfsd restart
+  become: yes
+  become_method: sudo
+  when: exports.changed
+
+- name: Add Docker Machine Environment to .zshrc
+  lineinfile: >
+    dest=~/.zshrc
+    line="eval "$(flight system env)""
+    state=present
+    create=yes
+  when: ansible_env.SHELL == "/bin/zsh"
+
+- name: Add Docker Machine Environment to .bash_profile
+  lineinfile: >
+    dest=~/.bash_profile
+    line="eval "$(flight system env)""
+    state=present
+    create=yes
+  when: ansible_env.SHELL == "/bin/bash"
+
+- name: Create Docker Machine
+  command: "{{dev_env_dir}}/bin/dev machine create creates=~/.docker/machine/machines/dev/config.json"
