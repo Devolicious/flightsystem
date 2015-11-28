@@ -8,9 +8,9 @@
     - docker-compose
 
 - name: Create resolver directory
-    file: path=/etc/resolver state=directory mode=0755
-    become: yes
-    become_method: sudo
+  file: path=/etc/resolver state=directory mode=0755
+  become: yes
+  become_method: sudo
 
 - name: Create dev resolver file at /etc/resolver/dev
   file: >
