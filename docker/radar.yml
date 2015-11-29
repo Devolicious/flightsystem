@@ -1,6 +1,6 @@
 nginx:
   image: jwilder/nginx-proxy
-  name: dnsproxy
+  container_name: dnsproxy
   ports:
     - "80:80"
     - "443:443"
@@ -9,7 +9,7 @@ nginx:
   restart: always
 dnsmasq:
   image: andyshinn/dnsmasq
-  name: dnsmasq
+  container_name: dnsmasq
   ports:
     - "192.168.99.100:53:53/tcp"
     - "192.168.99.100:53:53/udp"
@@ -20,7 +20,7 @@ dnsmasq:
 
 # dnsdock:
 #   image: tonistiigi/dnsdock
-#   name: dnsdock
+#   container_name: dnsdock
 #   ports:
 #     - 0.0.0.0:53:53/udp
 #   volumes:
