@@ -97,7 +97,7 @@ HEREDOC
     if (args[0] == "up")
       args.push("-d")
     end
-    args.unshift("docker-compose", "-f radar.yml", "-p radar")
+    args.unshift("docker-compose", "-f /usr/local/flightsystem/docker/radar.yml", "-p radar")
     system(args.join(" "))
   end
 
