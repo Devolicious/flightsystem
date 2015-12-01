@@ -44,7 +44,7 @@
     line="eval "$(flight system env)""
     state=present
     create=yes
-  when: ansible_env.SHELL == "/bin/zsh"
+  when: ansible_env.SHELL == "/usr/local/bin/zsh"
 
 - name: Add Docker Machine Environment to .bash_profile
   lineinfile: >
@@ -52,4 +52,4 @@
     line="eval "$(flight system env)""
     state=present
     create=yes
-  when: ansible_env.SHELL == "/bin/bash"
+  when: ansible_env.SHELL == "/usr/local/bin/bash"
