@@ -41,7 +41,7 @@
 - name: Add Docker Machine Environment to .zshrc
   lineinfile: >
     dest=~/.zshrc
-    line='eval "$(flightsytem machine env)"'
+    line='eval "$(docker-machine env dev)"'
     state=present
     create=yes
   when: ansible_env.SHELL == "/usr/local/bin/zsh"
@@ -49,7 +49,7 @@
 - name: Add Docker Machine Environment to .bash_profile
   lineinfile: >
     dest=~/.bash_profile
-    line='eval "$(flightsytem machine env)"'
+    line='eval "$(docker-machine env dev)"'
     state=present
     create=yes
   when: ansible_env.SHELL == "/usr/local/bin/bash"
