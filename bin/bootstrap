@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
+BGreen='\e[1;32m'       # Green
+Color_Off='\e[0m'       # Text Reset
+
+## Just be awesome
+printf "${BGreen}  _____ _ _       _     _                 _                  ${Color_Off}\n"
+printf "${BGreen} |  ___| (_) __ _| |__ | |_ ___ _   _ ___| |_ ___ _ __ ___   ${Color_Off}\n"
+printf "${BGreen} | |_  | | |/ _\` | '_ \| __/ __| | | / __| __/ _ \ '_ \` _ \  ${Color_Off}\n"
+printf "${BGreen} |  _| | | | (_| | | | | |_\__ \ |_| \__ \ ||  __/ | | | | | ${Color_Off}\n"
+printf "${BGreen} |_|   |_|_|\__, |_| |_|\__|___/\__, |___/\__\___|_| |_| |_| ${Color_Off}\n"
+printf "${BGreen}            |___/               |___/ ## By Kunstmaan ##     ${Color_Off}\n\n"
+
 ## Update Homebrew ##
 echo 'Installing or Updating Homebrew...'
 brew update
