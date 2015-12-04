@@ -1,28 +1,28 @@
-nginx:
-  image: jwilder/nginx-proxy
-  container_name: dnsproxy
-  ports:
-    - "80:80"
-    - "443:443"
-  volumes:
-    - /var/run/docker.sock:/tmp/docker.sock:ro
-  restart: always
-dnsmasq:
-  image: andyshinn/dnsmasq
-  container_name: dnsmasq
-  ports:
-    - "192.168.99.100:53:53/tcp"
-    - "192.168.99.100:53:53/udp"
-  cap_add:
-    - NET_ADMIN
-  command: --address=/dev/192.168.99.100
-  restart: always
+#nginx:
+#  image: jwilder/nginx-proxy
+#  container_name: dnsproxy
+#  ports:
+#    - "80:80"
+#    - "443:443"
+#  volumes:
+#    - /var/run/docker.sock:/tmp/docker.sock:ro
+#  restart: always
+#dnsmasq:
+#  image: andyshinn/dnsmasq
+#  container_name: dnsmasq
+#  ports:
+#    - "192.168.99.100:53:53/tcp"
+#    - "192.168.99.100:53:53/udp"
+#  cap_add:
+#    - NET_ADMIN
+#  command: --address=/dev/192.168.99.100
+#  restart: always
 
-# dnsdock:
-#   image: tonistiigi/dnsdock
-#   container_name: dnsdock
-#   ports:
-#     - 0.0.0.0:53:53/udp
-#   volumes:
-#     - /var/run/docker.sock:/var/run/docker.sock
-#   restart: always
+dnsdock:
+  image: tonistiigi/dnsdock
+  container_name: dnsdock
+  ports:
+    - 0.0.0.0:53:53/udp
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+  restart: always
